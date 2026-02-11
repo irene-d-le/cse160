@@ -115,6 +115,10 @@ function handleDrawOperationEvent() {
     var angle = angleBetween(v1, v2);
     console.log("Angle between v1 and v2:", angle, "degrees");
   }
+  else if (operation === 'area') {  // ADD THIS ENTIRE BLOCK
+    var area = areaTriangle(v1, v2);
+    console.log("Area of triangle:", area);
+  }
 }
 
 // Calculate angle between two vectors
@@ -126,6 +130,13 @@ function angleBetween(v1, v2) {
   var angleRadians = Math.acos(cosAngle);
   var angleDegrees = angleRadians * (180 / Math.PI);
   return angleDegrees;
+}
+// Calculate area of triangle given two vectors
+function areaTriangle(v1, v2) {
+  var crossProduct = Vector3.cross(v1, v2);
+  var parallelogramArea = crossProduct.magnitude();
+  var triangleArea = parallelogramArea / 2;
+  return triangleArea;
 }
 
 //Function to draw a vector
